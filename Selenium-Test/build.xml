@@ -1,0 +1,19 @@
+<project default="JSCover-start">
+	<property name="jscover.dir"     value="target"/>
+	<target name="JSCover-start">
+		<java jar="JSCover-all.jar" fork="true" spawn="true">
+			<arg value="-ws" />
+			<arg value="--document-root=src" />
+			<arg value="--branch" />
+			<arg value="--report-dir=${jscover.dir}" />
+			<arg value="--no-instrument=src/main/webapp/js/lib" />
+			<arg value="--no-instrument=src/test/" />
+			<arg value="--include-unloaded-js" />
+			<arg value="--port=8081" />
+		</java>
+		<waitfor maxwait="5" maxwaitunit="second" checkevery="250" checkeveryunit="millisecond" timeoutproperty="failed">
+			<http url="http://localhost:8082/jscoverage.html" />
+		</waitfor>
+		<fail if="failed" />
+	</target>
+</project>
