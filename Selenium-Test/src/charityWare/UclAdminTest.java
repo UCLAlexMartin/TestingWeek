@@ -26,7 +26,7 @@ public class UclAdminTest {
 
 	@Before
 	public void setUp() throws Exception {
-		driver = new HtmlUnitDriver();
+		driver = new FirefoxDriver();
 		baseUrl = "http://localhost:8081/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
