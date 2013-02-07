@@ -56,7 +56,7 @@ org.hibernate.envers.event.AuditEventListener
 	     <!-- Test property -->
 	     
    <!-- List of XML mapping files -->
-   		  <mapping resource="/hibernateEntities/User.hbm.xml"/>
+   		  <mapping resource="//hibernateEntities//User.hbm.xml"/>
           <mapping resource="/hibernateEntities/FormFields.hbm.xml"/>
           <mapping resource="/hibernateEntities/MailingGroup.hbm.xml"/>
           <mapping resource="/hibernateEntities/MailingList.hbm.xml"/>
