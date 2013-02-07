@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * @author shounoy
@@ -53,10 +54,11 @@ public class CharityDBUserNameTest {
 	@Test
 	public void test() {
 		WebDriver driver = new HtmlUnitDriver();
-		driver.get("http://localhost:8080/TEST_CharityWare/REST/charityLogin/CharityDB/hibernate.cfg.xml/userName/amartin");
+		driver.get("http://localhost:8080/CharityWare/REST/charityLogin/CharityDB/hibernate.cfg.xml/userName/amartin");
 
 		String rawJson = driver.getPageSource();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
 		
 		System.out.println(rawJson);
 		
