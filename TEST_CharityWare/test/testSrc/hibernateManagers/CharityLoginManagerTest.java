@@ -51,7 +51,7 @@ public class CharityLoginManagerTest {
 		assertEquals("ucabwei@ucl.ac.uk", result.get(0).getUserEmail());
 		assertEquals("abc", result.get(0).getSalt());
 		assertTrue(result.get(0).getIsActive());
-		assertEquals("2013-02-06 22:22:00", result.get(0).getDateCreated().toString());
+		assertEquals("2013-02-06", result.get(0).getDateCreated().toString());
 		
 		//for methods that return an object, add toString() method to the corr. class?
 		//assertEquals(" ", result.get(0).getUserTypeId());

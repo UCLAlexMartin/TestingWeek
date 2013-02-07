@@ -34,6 +34,15 @@ public class EventManagerTest {
 	public void testGetEventsFirst() {
 		Map<Integer,ArrayList<String>> result = EventManager.getEvents();
 		
+		// this is for debugging, there is an error in this test
+		if(result.get(new Integer(1))==null){
+			System.out.println("line 1 is null");
+			// this line is entered, which means the first row is not obtained
+			// something wrong with the source code
+		}
+		else
+			System.out.println("line 1 not null");
+		
 		// test the first record (event_id=1)
 		assertEquals("2013-01-07",result.get(new Integer(1)).get(0));
 		assertEquals("Hope Fund Raising",result.get(new Integer(1)).get(1));
