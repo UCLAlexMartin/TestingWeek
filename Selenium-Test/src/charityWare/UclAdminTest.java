@@ -14,6 +14,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,7 +26,7 @@ public class UclAdminTest {
 
 	@Before
 	public void setUp() throws Exception {
-		driver = new FirefoxDriver();
+		driver = new HtmlUnitDriver();
 		baseUrl = "http://localhost:8081/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}

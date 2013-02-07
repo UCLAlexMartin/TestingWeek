@@ -267,7 +267,7 @@
       					<!-- <button type="button" id="clearbtn" onclick='removeChildren(document.getElementById("rowsetrows") ); document.getElementById("argc").value=0;'>Clear all rows</button>
       					 -->
       					 </fieldset>
-      					<button type="button" onclick="hideFormWizard()">Hide</button>
+      					<button type="button" id="btnHideFormWizard" onclick="hideFormWizard()">Hide</button>
       					<button type="button" id="btnSubmitForm" onclick="createForm()">Create this form!</button>
       					<button type="button" id="clearbtn" onclick='removeChildren(document.getElementById("rowsetrows") ); document.getElementById("argc").value=0;'>Clear all rows</button>
       					
