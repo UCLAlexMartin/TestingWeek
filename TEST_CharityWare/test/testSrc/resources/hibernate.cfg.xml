@@ -48,7 +48,7 @@
 			root
 		</property>
 		<property name="hibernate.connection.password">
-			root
+			nttdata
 		</property>
 
 		<!-- Test property -->
