@@ -9,6 +9,7 @@ import hibernateEntities.User;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,9 +30,9 @@ import org.powermock.modules.junit4.PowerMockRunner;
  * 
  */
 @RunWith(PowerMockRunner.class)
-// PowerMockâ€šÃŒâ€”Ëœâ€”pâ€šÃ°ï¿½Ã©Å’Â¾
+// PowerMock‚Ì—˜—p‚ğéŒ¾
 @PrepareForTest({ ConnectionManager.class })
-// Æ’â€šÆ’bÆ’NÆ’IÆ’uÆ’WÆ’FÆ’NÆ’gâ€šÃ°ï¿½Ã¬â€šÃ©Æ’NÆ’â€°Æ’Xâ€šÃ°ï¿½Ã©Å’Â¾
+// ƒ‚ƒbƒNƒIƒuƒWƒFƒNƒg‚ğì‚éƒNƒ‰ƒX‚ğéŒ¾
 public class UserManagerTest {
 
 	/**
@@ -56,7 +57,8 @@ public class UserManagerTest {
 	public void setUp() throws Exception {
 		Configuration config = new AnnotationConfiguration();
 		config.configure(new File(
-				"C:\\Users\\Alex\\Desktop\\TEST_CharityWare\\test\\testSrc\\resources\\hibernate.cfg.xml"));
+				".\\test\\testSrc\\resources\\hibernate.cfg.xml"));
+		
 		SessionFactory factory = config.buildSessionFactory();
 		Session hibernateSession = factory.openSession();
 
@@ -162,7 +164,10 @@ public class UserManagerTest {
 	 */
 	@Test
 	public void testGetForms() {
-		fail("Not yet implemented");
+		String name = "lchirchop";
+		Map<Integer, List<String>> actual = UserManager.getForms();
+
+		assertEquals(name, actual.get(1).get(0));
 	}
 
 	/**
@@ -170,8 +175,42 @@ public class UserManagerTest {
 	 * {@link hibernateManagers.UserManager#getFormEntities(java.lang.String)}.
 	 */
 	@Test
-	public void testGetFormEntities() {
-		fail("Not yet implemented");
+	public void testGetFormEntities1() {
+		String name = "lchirchop";
+		Map<Integer, Map<Integer, List<String>>> actual = UserManager.getFormEntities(name);
+
+		for (String tmp1: actual.get(1).get(1)){
+			System.out.println(tmp1);
+		}
+		
+		String expected = "Input_Form";
+		
+		assertEquals(expected, actual.get(1).get(1).get(0));
+		
+		
+		
 	}
 
+	/**
+	 * Test method for
+	 * {@link hibernateManagers.UserManager#getFormEntities(java.lang.String)}.
+	 */
+	@Test
+	public void testGetFormEntities2() {
+		String name = "sample";
+		Map<Integer, Map<Integer, List<String>>> actual = UserManager.getFormEntities(name);
+
+		for (String tmp1: actual.get(1).get(1)){
+			System.out.println(tmp1);
+		}
+		
+		String expected = "no user";
+		
+		assertEquals(expected, actual.get(1).get(1).get(0));
+		
+		
+		
+	}
+
+	
 }
