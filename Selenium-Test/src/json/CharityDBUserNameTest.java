@@ -60,15 +60,14 @@ public class CharityDBUserNameTest {
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
 		
-		System.out.println(rawJson);
+//		System.out.println(rawJson);
 		
 		User user = gson.fromJson(rawJson, User.class);
-		System.out.println("aaa" + user.getUser_id());
 		
-//		Categories cotegories = gson.fromJson(rawJson, Categories.class);
-//
-//		categories.getCategories().get(0).getCategId();
-//		categories.getCategories().get(0).getCategType();
+		String expected = "amartin";
+		
+		assertEquals(expected, user.getUserName());
+		
 	}
 
 }
