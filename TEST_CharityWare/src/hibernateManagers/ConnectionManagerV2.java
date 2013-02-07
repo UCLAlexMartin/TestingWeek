@@ -12,13 +12,16 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class ConnectionManagerV2 {
-	private SessionFactory factory;
+	private static SessionFactory factory;
 	private String DBConfname;
 
 	public String getDBConfname() {
 		return DBConfname;
 	}
 
+	public static void setFactory(SessionFactory factory) {
+		ConnectionManagerV2.factory = factory;
+	}
 	public void setDBConfname(String DBConfname) {
 		this.DBConfname = DBConfname;
 	}
