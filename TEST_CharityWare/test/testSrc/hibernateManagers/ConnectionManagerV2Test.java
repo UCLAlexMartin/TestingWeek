@@ -5,9 +5,14 @@ package hibernateManagers;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +33,14 @@ public class ConnectionManagerV2Test {
 	@Before
 	public void setUp() throws Exception {
 		TestManager = new ConnectionManagerV2();
+		Configuration config = new AnnotationConfiguration();
+		config.configure(new File(
+				".\\test\\testSrc\\resources\\hibernate.cfg.xml"));
+		
+		SessionFactory factory = config.buildSessionFactory();
+		Session hibernateSession = factory.openSession();
+
+		TestManager.setFactory(factory);
 	}
 
 	/**
@@ -49,10 +62,21 @@ public class ConnectionManagerV2Test {
 	
 	@Test
 	/**
+	 * Test that the getter and setter methods are working.
+	 */
+	public void testSessionBranch() {
+		ConnectionManagerV2 TestManager2 = new ConnectionManagerV2();
+		TestManager2.setFactory(null);
+		TestManager2.setDBConfname("hibernate.cfg.xml");		
+		ArrayList<User> Alex = (ArrayList<User>)TestManager2.getTable("User");
+		assertNotNull("Session branch 2",Alex);
+		}
+	
+	@Test
+	/**
 	 * Test that the get table statement is working.
 	 */
 	public void testGetTable() {
-		TestManager.setDBConfname("hibernate.cfg.xml");	
 		ArrayList<User> Alex = (ArrayList<User>)TestManager.getTable("User");
 		assertNotNull("Get Table Working",Alex);
 	}

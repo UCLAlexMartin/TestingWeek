@@ -34,7 +34,7 @@ public class ConnectionManagerV2 {
 		return result;
 	}
 
-	public Object get(Class arg0, Serializable serial) {
+	/*public Object get(Class arg0, Serializable serial) {
 		Session session = this.getSession();
 		Object result = session.get(arg0, serial);
 		this.closeSession(session);
@@ -69,7 +69,7 @@ public class ConnectionManagerV2 {
 			this.closeSession(session);
 		}
 		return serial;
-	}
+	}*/
 
 	private Session getSession() {
 		if (factory == null) {
